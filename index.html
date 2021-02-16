@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>ESM</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+    <!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+    <link rel="icon" type="image/png" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="app.css">
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110862391-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110862391-3');
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+    <script src="app.js"></script>
+</head>
+
+<body>
+<div class="container" id="main">
+    <div class="row">
+        <h1 class="col-md-12 text-center">
+            End-to-End Egospheric Spatial Memory </br>
+            <small>
+                ICLR 2021
+            </small>
+        </h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <ul class="list-inline">
+                <li>
+                    <a href="https://djl11.github.io/">
+                        Daniel Lenton
+                    </a><sup>1</sup>
+                </li>
+                <li>
+                    <a href="https://stepjam.github.io/">
+                        Stephen James
+                    </a><sup>1</sup>
+                </li>
+                <li>
+                    <a href="http://www.ronnieclark.co.uk/">
+                        Ronald Clark
+                    </a><sup>2</sup>
+                </li>
+                <li>
+                    <a href="https://www.doc.ic.ac.uk/~ajd/">
+                        Andrew Davison
+                    </a><sup>1</sup>
+                </li>
+            </ul>
+            <sup>1</sup>Dyson Robotics Lab, <sup>2</sup>Department of Computing</br>Imperial College London
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-xs-4 col-sm-2 col-sm-offset-3 text-center">
+            <a href="https://arxiv.org/abs/2102.07764">
+                <image src="paper.png" height="50px"></image>
+                <br>
+                <h4><strong>Paper</strong></h4>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-2 text-center">
+            <a href="https://github.com/ivy-dl/memory">
+                <image src="ivy.png" height="50px"></image>
+                <br>
+                <h4><strong>Implementation</strong></h4>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-2 text-center">
+            <a href="https://github.com/djl11/ESM">
+                <image src="github.png" height="50px"></image>
+                <br>
+                <h4><strong>Experiments</strong></h4>
+            </a>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item fa fa-4x wow fadeInLeft"
+                        src="https://www.youtube.com/embed/TvprqJHngTM" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Overview
+            </h3>
+            Egospheric Spatial Memory (ESM) encodes the memory in an ego-sphere around the agent,
+            enabling expressive 3D representations.
+            ESM can be trained end-to-end via either imitation or reinforcement learning,
+            and improves both training efficiency and final performance against other memory baselines on
+            both drone and manipulator visuomotor control tasks.
+            <br>
+            <br>
+            ESM is a parameter-free module, and relies on forward warp reprojections for updating the memory.
+            The egospheric memory at time t-1 is combined with the new observations at time t,
+            to produce the new egospheric memory at time t.
+            <br>
+            <br>
+            <image src="ESM_pipeline.png" width="100%" class="center"></image>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Off-the-Shelf Mapping
+            </h3>
+            Assuming access to a stream of depth and color images, and access to camera pose estimates,
+            the ESM module can be used for off-the-shelf real-time egocentric mapping,
+            with color values projected into memory.
+            <br>
+            <br>
+            <video width="100%" autoplay loop controls muted>
+                <source src="off_the_shelf.mp4" type="video/mp4"/>
+            </video>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Neural Network Integration
+            </h3>
+            The real stength of ESM arises when training end-to-end as part of a wider neural network.
+            The ESM module can be combined with both pre-module convolutions and post-module convolutions, for solving a
+            variety of downstream tasks.
+            The pre-module convolutions enable learnt features to be stored in the module, optimized for any downstream
+            task.
+            The post-module convolutions can then use this stored representation to execute the task.
+            We refer to networks with both pre and post module convolutions as Egospheric Spatial Memory Networks
+            (ESMN).
+            For some tasks, the post-module convolutions are sufficient, with color values projected into the
+            memory.
+            We refer to these networks as ESMN-RGB.
+            <br>
+            <br>
+            We compare against other less structured memory baselines, such as long short term memory (LSTM),
+            and neural turing machines (NTM).
+            The baseline methods are given access to all the same information, including ground truth poses.
+            <br>
+            <br>
+            <image src="simplified_networks.png" width="100%" class="center"></image>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Image to Action Learning
+            </h3>
+            We test ESM in a variety of image-to-action reacher tasks.
+            We test for 6DOF control of both drones and robot manipulators, using either onboard or freely moving
+            cameras,
+            with networks conditioned on target shape or target color, trained using either imitation learning or
+            reinforcement learning.
+            In all cases, we find that ESMN and ESMN-RGB outperform less structured memory baselines, such as long short
+            term memory, and neural turing machines.
+            <br>
+            <br>
+            The explicit geometry also enables seamless integration with other non-learnt control strategies, such as
+            local obstacle avoidance.
+            The egocentric geometry leads to more robust avoidance than is possible using individual depth frames.
+            <br>
+            <br>
+            <video width="100%" autoplay loop controls muted>
+                <source src="image_to_action.mp4" type="video/mp4"/>
+            </video>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+        <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Object Segmentation
+            </h3>
+            We also apply the module to object segmentation.
+            We find that both the pre-module and post-module convoltuions are required to achieve the best performance, with the ESMN architecture.
+            ESMN combines the benefits of both image level and map level inference,
+            outperforming baselines which either fuse monocular predictions (Mono) or make predictions directly from an RGB map (ESMN-RGB).
+            <br>
+            <br>
+            <video width="100%" autoplay loop controls muted>
+                <source src="object_segmentation.mp4" type="video/mp4"/>
+            </video>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                BibTeX
+            </h3>
+            <div class="form-group col-md-10 col-md-offset-1">
+                <textarea id="bibtex" class="form-control" readonly>
+@misc{lenton2021endtoend,
+      title={End-to-End Egospheric Spatial Memory},
+      author={Daniel Lenton and Stephen James and Ronald Clark and Andrew J. Davison},
+      year={2021},
+      eprint={2102.07764},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+}
+                </textarea>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
